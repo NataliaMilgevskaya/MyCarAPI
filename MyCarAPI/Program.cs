@@ -21,9 +21,10 @@ namespace MyCarAPI
             var app = builder.Build();
 
             //app.UseMiddleware<IManagementCars>();
-            app.Map("/car_names", HandleNames);
-            app.Map("/car_engines", HandleEngines);
-            app.Map("/car_ages", HandleAges);
+            //app.Map("/names", HandleNamesAsync);
+            app.Map("/names", HandleNames);
+            app.Map("/engines", HandleEngines);
+            app.Map("/ages", HandleAges);
 
             app.Run(async context =>
             {
@@ -55,34 +56,26 @@ namespace MyCarAPI
             app.Run();
         }
 
-        //public static void HandleNames(IApplicationBuilder app)
+        //public static async Task HandleNamesAsync(HttpContext context)
         //{
-        //    app.Run(async context =>
+        //    foreach (var car in Garage.Cars)
         //    {
-        //        await context.Response.WriteAsync("");
-        //        //var t = app.ApplicationServices.GetService<IManagementCars>();
-        //        foreach (var car in Garage.Cars)
-        //        {
-        //            await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
-                    
-        //        }
+        //        await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
         //    }
-        //        );
-
         //}
         public static void HandleNames(IApplicationBuilder app)
         {
             app.Run(async context =>
             {
                 await context.Response.WriteAsync("");
-        app.Use(async (context, next) =>
-                {
+                app.Use(async (context, next) =>
+                                {
                     foreach (var car in Garage.Cars)
                     {
                         await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
-        await next();
-    }
-});
+                        await next();
+                    }
+                });
             }
                 );
 
