@@ -55,19 +55,34 @@ namespace MyCarAPI
             app.Run();
         }
 
+        //public static void HandleNames(IApplicationBuilder app)
+        //{
+        //    app.Run(async context =>
+        //    {
+        //        await context.Response.WriteAsync("");
+        //        //var t = app.ApplicationServices.GetService<IManagementCars>();
+        //        foreach (var car in Garage.Cars)
+        //        {
+        //            await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
+                    
+        //        }
+        //    }
+        //        );
+
+        //}
         public static void HandleNames(IApplicationBuilder app)
         {
             app.Run(async context =>
             {
                 await context.Response.WriteAsync("");
-                app.Use(async (context, next) =>
+        app.Use(async (context, next) =>
                 {
                     foreach (var car in Garage.Cars)
                     {
                         await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
-                        await next();
-                    }
-                });
+        await next();
+    }
+});
             }
                 );
 
