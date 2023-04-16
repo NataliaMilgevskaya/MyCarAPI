@@ -1,3 +1,7 @@
 .vs/
 MyCarAPI/bin/
 MyCarAPI/obj/
+WebApp/obj/
+WebApp/bin/
+WebApp/Pages/
+WebApp/wwwroot/lib/

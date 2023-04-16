@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCSharpProject", "MyCSharpProject\MyCSharpProject.csproj", "{00DD37B3-95EF-4CDE-9269-D9C095119ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCarAPI", "MyCarAPI\MyCarAPI.csproj", "{61FF9955-A6BE-41A5-883A-DC68E3586544}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCarAPI", "MyCarAPI\MyCarAPI.csproj", "{61FF9955-A6BE-41A5-883A-DC68E3586544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{94056CAA-B127-48DB-8129-AA3810A7A6FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{61FF9955-A6BE-41A5-883A-DC68E3586544}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61FF9955-A6BE-41A5-883A-DC68E3586544}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61FF9955-A6BE-41A5-883A-DC68E3586544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94056CAA-B127-48DB-8129-AA3810A7A6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94056CAA-B127-48DB-8129-AA3810A7A6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94056CAA-B127-48DB-8129-AA3810A7A6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94056CAA-B127-48DB-8129-AA3810A7A6FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

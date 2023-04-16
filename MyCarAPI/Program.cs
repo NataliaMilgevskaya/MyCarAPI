@@ -31,10 +31,13 @@ namespace MyCarAPI
                 var t = app.Services.GetService<IManagementCars>();
                 foreach (var car in Garage.Cars)
                 {
+                    
+                    //context.Response.ContentType = "text/html;charset=utf-8"; выводит в одну строку 1 машину
                     await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
                     await context.Response.WriteAsync($"\t Engine {car?.GetCarEngine()}");
                     await context.Response.WriteAsync($"\t Age {car?.GetCarAge()}");
                 }
+               
 
 
             });

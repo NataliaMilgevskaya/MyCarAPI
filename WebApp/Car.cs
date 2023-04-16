@@ -1,4 +1,4 @@
-﻿namespace MyCarAPI
+﻿namespace WebApp
 {
     public interface IManagementCars
     {
