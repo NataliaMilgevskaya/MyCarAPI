@@ -1,6 +1,7 @@
 namespace WebApp
 {
-    public class Program
+    public delegate void MyDelegate(string msg);
+    public partial class Program
     {
         public static void Main(string[] args)
         {
@@ -41,6 +42,29 @@ namespace WebApp
 
             });
 
+            //app.UseMiddleware<CounterMiddleware>;
+
+            printString myDelegate = Console.WriteLine;
+            myDelegate("Choose color");
+            static void PrintGreen(string input)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(input);
+            }
+
+            static void PrintOrange(string input)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(input);
+            }
+
+            myDelegate = PrintGreen;
+            myDelegate("This text should be green.");
+
+            myDelegate = PrintOrange;
+            myDelegate("This text should be orange.");
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -69,24 +93,11 @@ namespace WebApp
                 
 
         }
-        //public static void HandleNames(IApplicationBuilder app)
-        //{
-        //    app.Run(async context =>
-        //    {
-        //        await context.Response.WriteAsync("");
-        //        app.Use(async (context, next) =>
-        //        {
-        //            foreach (var car in Garage.Cars)
-        //            {
-        //                await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
-        //                await next();
-        //                context.Response.ContentType = "text/html;charset=utf-8";
-        //            }
-        //        });
-        //    }
-        //        );
 
-        //}
+        delegate void printString(string input);
+
+
+
 
         public static void HandleEngines(IApplicationBuilder app)
         {
@@ -122,7 +133,8 @@ namespace WebApp
 
         }
 
-        //public static void HandleEngines(IApplicationBuilder app)
+
+        //public static void HandleNames(IApplicationBuilder app)
         //{
         //    app.Run(async context =>
         //    {
@@ -131,8 +143,9 @@ namespace WebApp
         //        {
         //            foreach (var car in Garage.Cars)
         //            {
-        //                await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarEngine()}");
+        //                await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarName()}");
         //                await next();
+        //                context.Response.ContentType = "text/html;charset=utf-8";
         //            }
         //        });
         //    }
@@ -140,41 +153,23 @@ namespace WebApp
 
         //}
 
-        //public static void HandleAges(IApplicationBuilder app)
-        //{
-        //    app.Run(async context =>
-        //    {
 
-        //        await context.Response.WriteAsync("");
-        //        app.Use(async (context, next) =>
-        //        {
-        //            foreach (var car in Garage.Cars)
-        //            {
-        //                await context.Response.WriteAsync($"\n \n Car \t{car?.GetCarAge()}");
-        //                await next();
-        //            }
-        //        });
-        //    }
-        //    );
+        public Task Invoke(HttpContext httpContext, IApplicationBuilder app)
+        {
+            app.UseExceptionHandler(error =>
+            {
+                error.Run(async context =>
+                {
+                    await context.Response.WriteAsync("from Exception Handler middleware");
+                });
+            });
+            return next(httpContext);
+        }
 
-        //}
-
-        ////public Task Invoke(HttpContext httpContext, IApplicationBuilder app)
-        ////{
-        ////    app.UseExceptionHandler(error =>
-        ////    {
-        ////        error.Run(async context =>
-        ////        {
-        ////            await context.Response.WriteAsync("from Exception Handler middleware");
-        ////        });
-        ////    });
-        ////    return next (httpContext);
-        ////}
-
-        ////private Task next(HttpContext httpContext)
-        ////{
-        ////    throw new NotImplementedException();
-        ////}
+        private Task next(HttpContext httpContext)
+        {
+            throw new NotImplementedException();
+        }
     }
-    
+
 }
