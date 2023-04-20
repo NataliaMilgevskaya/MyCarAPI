@@ -1,0 +1,33 @@
+﻿@page
+@model WebApplication_Razor.Pages.MyPageModel
+@{
+    ViewData["Title"] = "My hobby";
+}
+<style>
+    body {
+        background-image: <img src="img_girl.jpg"> ;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<section id="my_main"
+   <div>
+    <h1>Under this text you can see my hobbies & priority</h1>
+</div>
+
+    @foreach (var hob in Model.Hobbies)
+    {
+        <div>
+            <a asp_page ="/hobby" asp-route-id="@hob.Id" title=" name @hob.Name"></a>
+            <div>
+                <center>
+                <h2><strong>@hob.Name</strong></h2>
+                <img src="@hob.Image" alt="@hob.Description" style="width:200px;height:200px;">
+                <p>@hob.Description</p>
+                <p style="background-color:lightslategrey;">@hob.Priority</p>
+                </center>
+            </div>
+        </div>
+    }
+</section>
