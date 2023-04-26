@@ -1,0 +1,17 @@
+﻿@model Friend
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.FriendId)
+    @Html.TextBoxFor(model => model.FriendId, new { @readonly = "readonly" })
+
+    @Html.LabelFor(model => model.FriendName)
+    @Html.TextBoxFor(model => model.FriendName)
+    @Html.ValidationMessageFor(model => model.FriendName)
+
+    @Html.LabelFor(model => model.Place)
+    @Html.TextBoxFor(model => model.Place)
+    @Html.ValidationMessageFor(model => model.Place)
+
+    <button type="submit">Update Friend</button>
+}

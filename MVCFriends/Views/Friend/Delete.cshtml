@@ -1,0 +1,25 @@
+﻿@model Friend
+
+<h2>Delete Friend</h2>
+
+<p>Are you sure you want to delete the following friend?</p>
+
+<table>
+    <tr>
+        <td>FriendID:</td>
+        <td>@Model.FriendId</td>
+    </tr>
+    <tr>
+        <td>FriendName:</td>
+        <td>@Model.FriendName</td>
+    </tr>
+    <tr>
+        <td>Place:</td>
+        <td>@Model.Place</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    <button type="submit">Delete Friend</button>
+}
